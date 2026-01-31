@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bibek.beans.Student" table="std_register">
+
+        <id name="stdId" column="std_id">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="name" column="std_name"/>
+        <property name="rollno" column="std_rollno"/>
+        <property name="email" column="std_email"/>
+        <property name="gender" column="std_gender"/>
+        <property name="city" column="std_city"/>
+
+    </class>
+</hibernate-mapping>
