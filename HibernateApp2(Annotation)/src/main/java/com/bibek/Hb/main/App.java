@@ -5,33 +5,36 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.bibek.beans.Employee;
+import com.bibek.beans.Student;
 
 public class App {
     public static void main(String[] args) {
 
-        Employee emp = new Employee();
-        emp.setEmpid(101);
-        emp.setEmpname("Bibek");
-        emp.setEmpdept("Java");
-        emp.setEmpcity("Jtm");
+        Student std = new Student();
+        std.setStdId(1);
+        std.setName("Bibek");
+        std.setRollno(4);
+        std.setEmail("bibek@gmail.com");
+        std.setGender("Male");
+        std.setCity("Kathmandu");
 
         Configuration cfg = new Configuration();
-        cfg.configure("com/bibek/resources/hibernate.cfg.xml");
+        cfg.configure("/com/bibek/resources/hibernate.cfg.xml");
 
         SessionFactory sessionFactory = cfg.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.save(emp);
+            session.save(std);
             transaction.commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println("Success");
+        } catch (Exception e) {
             transaction.rollback();
+            System.out.println("Failed");
+            e.printStackTrace();
         } finally {
             session.close();
-            sessionFactory.close();
         }
     }
 }
