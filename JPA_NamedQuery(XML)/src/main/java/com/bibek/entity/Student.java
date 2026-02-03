@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="std_details")
-@NamedQuery(name= "getAllStudentDetails", query="SELECT s FROM Student s")
 public class Student {
 	@Id
 	@Column(name = "std_id")

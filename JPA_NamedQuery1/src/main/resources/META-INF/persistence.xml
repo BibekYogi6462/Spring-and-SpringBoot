@@ -6,7 +6,7 @@
           
           <persistence-unit name="main-persistence-unit">
                 
-               
+               <mapping-file>META_INF/orm.xml</mapping-file>
                 <properties>
                  <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
                  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3308/jpa_db"/>
