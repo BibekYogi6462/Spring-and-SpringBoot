@@ -18,19 +18,16 @@ public class App {
         EntityManager em = emf.createEntityManager();
 
         try {
-            String jpqlQuery = "SELECT s FROM Student s";
+            String jpqlQuery = "SELECT s FROM Student s WHERE s.id = :stdId";
             TypedQuery<Student> query = em.createQuery(jpqlQuery,Student.class);
-
-            List<Student> stdList = query.getResultList();
-
-            for (Student s : stdList) {
-                System.out.println(
-                        s.getId() + " | " +
-                        s.getName() + " | " +
-                        s.getEmail() + " | " +
-                        s.getMarks()
-                );
-            }
+            query.setParameter("stdId", 102);
+           Student s = query.getSingleResult();
+           System.out.println(
+                   s.getId() + " | " +
+                   s.getName() + " | " +
+                   s.getEmail() + " | " +
+                   s.getMarks()
+           );
 
         } catch (Exception e) {
             e.printStackTrace();
