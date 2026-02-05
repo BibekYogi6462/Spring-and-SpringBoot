@@ -1,11 +1,10 @@
 package com.bibek.Hb.main;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import com.bibek.beans.Student;
+import com.bibek.util.HibernateUtil;
 
 public class App {
     public static void main(String[] args) {
@@ -18,23 +17,21 @@ public class App {
         std.setGender("Male");
         std.setCity("Kathmandu");
 
-        Configuration cfg = new Configuration();
-        cfg.configure("/com/bibek/resources/hibernate.cfg.xml");
+        Transaction tx = null;
 
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        try (Session session =
+                HibernateUtil.getSessionFactory().openSession()) {
 
-        try {
-            session.save(std);
-            transaction.commit();
+            tx = session.beginTransaction();
+
+            session.persist(std);   // modern alternative to save()
+
+            tx.commit();
             System.out.println("Success");
+
         } catch (Exception e) {
-            transaction.rollback();
-            System.out.println("Failed");
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        } finally {
-            session.close();
         }
     }
 }
