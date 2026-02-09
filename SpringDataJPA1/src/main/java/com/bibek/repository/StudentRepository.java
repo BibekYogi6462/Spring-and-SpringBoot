@@ -1,5 +1,11 @@
 package com.bibek.repository;
 
-public class StudentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.bibek.entity.Student;
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Integer>{
 
 }

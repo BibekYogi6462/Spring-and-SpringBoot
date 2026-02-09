@@ -8,10 +8,12 @@ import com.bibek.repository.StudentRepository;
 
 @Service
 public class StudentService {
-	@Autowired
-	private StudentRepository studentRepository;
-   
-	public boolean insertStdDetailsService(Student std) {
-		studentRepository.save(std);
-	}
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public boolean insertStdDetailsService(Student std) {
+        studentRepository.save(std);
+        return true;
+    }
 }
