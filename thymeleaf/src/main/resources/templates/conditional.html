@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Conditional</title>
+</head>
+<body>
+
+<h1>Conditional</h1>
+
+<p th:if="${no1 > no2}">
+    <span th:text="${no1 + ' is greater than ' + no2}"></span>
+</p>
+
+<p th:if="${no1 < no2}">
+    <span th:text="${no1 + ' is lesser than ' + no2}"></span>
+</p>
+
+</body>
+</html>

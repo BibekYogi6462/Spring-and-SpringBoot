@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Iteration</title>
+</head>
+<body>
+<h1>Iteration</h1>
+<ul>
+    <li th:each="no: ${modelNumbers}">
+        <span th:text = "${no}"></span>
+    </li>
+</ul>
+</body>
+
+
+</html>
